@@ -4,6 +4,13 @@ public class LeaveType {
 	private int LeaveId;
 	private String LeaveName;
 	private String LeaveDescription;
+	
+	public LeaveType(int leaveId, String leaveName, String leaveDescription) {
+		super();
+		LeaveId = leaveId;
+		LeaveName = leaveName;
+		LeaveDescription = leaveDescription;
+	}
 	public int getLeaveId() {
 		return LeaveId;
 	}

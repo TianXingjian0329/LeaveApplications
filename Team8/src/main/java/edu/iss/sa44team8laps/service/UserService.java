@@ -8,19 +8,19 @@ import edu.iss.sa44team8laps.model.User;
 public interface UserService {
 	ArrayList<User> findAllUsers();
 	
-	User findUser(String userId);
+	User findUser(int userId);
 
 	User createUser(User user);
 
 	User changeUser(User user);
 
 	void removeUser(User user);
-
-	ArrayList<Role> findRolesForUser(String userId);
-
-	ArrayList<String> findRoleNamesForUser(String userId);
-
-	ArrayList<String> findManagerNameByUID(String userId);
+//
+//	ArrayList<Role> findRolesForUser(int userId);
+//
+//	ArrayList<String> findRoleNamesForUser(int userId);
+//
+//	ArrayList<String> findManagerNameByUID(int userId);
 	
-	User authenticate(String uname, String pwd);
+	User authenticate(int uname, String pwd);
 }

@@ -4,6 +4,13 @@ public class Role {
 	private int RoleId;
 	private String RoleName;
 	private String RoleDescription;
+	
+	public Role(int roleId, String roleName, String roleDescription) {
+		super();
+		RoleId = roleId;
+		RoleName = roleName;
+		RoleDescription = roleDescription;
+	}
 	public int getRoleId() {
 		return RoleId;
 	}

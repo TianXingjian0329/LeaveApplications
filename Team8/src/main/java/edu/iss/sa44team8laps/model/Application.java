@@ -11,6 +11,19 @@ public class Application {
 	private String status;
 	private String reason;
 	private String comment;
+	
+	public Application(int applicationId, int userId, int leaveId, Date leaveDate, int leavePeriod, String status,
+			String reason, String comment) {
+		super();
+		ApplicationId = applicationId;
+		UserId = userId;
+		LeaveId = leaveId;
+		LeaveDate = leaveDate;
+		LeavePeriod = leavePeriod;
+		this.status = status;
+		this.reason = reason;
+		this.comment = comment;
+	}
 	public int getApplicationId() {
 		return ApplicationId;
 	}

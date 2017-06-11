@@ -5,6 +5,14 @@ public class User {
 	private String UserPassword;
 	private int EmployeeId;
 	private String UserName;
+	
+	public User(int userId, String userPassword, int employeeId, String userName) {
+		super();
+		UserId = userId;
+		UserPassword = userPassword;
+		EmployeeId = employeeId;
+		UserName = userName;
+	}
 	public int getUserId() {
 		return UserId;
 	}

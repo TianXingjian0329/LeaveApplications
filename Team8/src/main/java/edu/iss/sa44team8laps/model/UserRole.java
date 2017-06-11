@@ -4,6 +4,13 @@ public class UserRole {
 	private int UserRoleId;
 	private int UserId;
 	private int RoleId;
+	
+	public UserRole(int userRoleId, int userId, int roleId) {
+		super();
+		UserRoleId = userRoleId;
+		UserId = userId;
+		RoleId = roleId;
+	}
 	public int getUserRoleId() {
 		return UserRoleId;
 	}
