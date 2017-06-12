@@ -18,35 +18,42 @@ public class RoleServiceImpl implements RoleService {
 	@Transactional
 	public Role createRole(Role r) {
 		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.saveAndFlush(r);
 	}
 
 	@Override
 	@Transactional
 	public Role updateRole(Role r) {
 		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.saveAndFlush(r);
 	}
 
 	@Override
 	@Transactional
-	public Role deleteRole(int id) {
+	public void deleteRole(Role r) {
 		// TODO Auto-generated method stub
-		return null;
+		roleRepository.delete(r);
 	}
 
 	@Override
 	@Transactional
 	public ArrayList<Role> findAllRole() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Role> list=(ArrayList<Role>)roleRepository.findAll();
+		return list;
 	}
 
 	@Override
 	@Transactional
 	public Role findRoleById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.findOne(id);
+	}
+
+	@Override
+	public Role findRoleByName(String name) {
+		// TODO Auto-generated method stub
+		return roleRepository.findRoleByRoleName(name);
 	}
 
 }

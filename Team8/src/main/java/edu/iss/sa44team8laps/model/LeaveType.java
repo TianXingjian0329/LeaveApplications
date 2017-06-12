@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="leave_type")
+@Table(name="Leave_Type")
 public class LeaveType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

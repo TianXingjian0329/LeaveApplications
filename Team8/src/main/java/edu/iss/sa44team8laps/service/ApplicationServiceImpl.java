@@ -14,6 +14,7 @@ import edu.iss.sa44team8laps.model.User;
 import edu.iss.sa44team8laps.repository.ApplicationRepository;
 import edu.iss.sa44team8laps.repository.EmployeeRepository;
 import edu.iss.sa44team8laps.repository.UserRepository;
+
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
 

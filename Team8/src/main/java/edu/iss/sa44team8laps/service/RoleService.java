@@ -10,9 +10,10 @@ public interface RoleService {
 	
 	Role updateRole(Role r);
 	
-	Role deleteRole(int id);
+	void deleteRole(Role r);
 	
 	ArrayList<Role> findAllRole();
 	
 	Role findRoleById(int id);
+	Role findRoleByName(String name);
 }

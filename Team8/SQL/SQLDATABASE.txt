@@ -1,0 +1,91 @@
+CREATE SCHEMA `sa44team8ca` ;
+
+
+CREATE TABLE `sa44team8ca`.`application` (
+  `application_id` INT(11) NOT NULL,
+  `user_id` INT(11) NULL,
+  `leave_id` INT(11) NULL,
+  `date_of_application` DATE NULL,
+  `period` INT(11) NULL,
+  `status` VARCHAR(20) NULL,
+  `reason` VARCHAR(100) NULL,
+  `manager_comments` VARCHAR(100) NULL,
+  PRIMARY KEY (`application_id`),
+  UNIQUE INDEX `applicationid_UNIQUE` (`application_id` ASC));
+
+CREATE TABLE IF NOT EXISTS `sa44team8ca`.`leave_type` (
+  `leave_id` INT(11) NOT NULL,
+  `leave_type` VARCHAR(45) NULL DEFAULT NULL,
+  `leave_desc` VARCHAR(100) NULL DEFAULT NULL,
+  PRIMARY KEY (`leave_id`));
+
+CREATE TABLE `sa44team8ca`.`user` (
+  `user_id` INT(11) NOT NULL,
+  `employee_id` INT(11) NULL,
+  `name` VARCHAR(45) NULL,
+  `pass_word` VARCHAR(45) NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC),
+  UNIQUE INDEX `employee_id_UNIQUE` (`employee_id` ASC));
+
+ALTER TABLE `sa44team8ca`.`user` 
+ADD COLUMN `role_id` INT(11) NULL AFTER `pass_word`;
+
+
+CREATE TABLE `sa44team8ca`.`employee` (
+  `id` INT(11) NOT NULL,
+  `employee_id` INT(11) NULL,
+  `manager_id` INT(11) NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `sa44team8ca`.`role` (
+  `role_id` INT(11) NOT NULL,
+  `role_name` VARCHAR(45) NULL,
+  `role_desc` VARCHAR(100) NULL,
+  PRIMARY KEY (`role_id`));
+
+
+ALTER TABLE `sa44team8ca`.`application` 
+ADD INDEX `leave_id_idx` (`leave_id` ASC);
+ALTER TABLE `sa44team8ca`.`application` 
+ADD CONSTRAINT `leave_id`
+  FOREIGN KEY (`leave_id`)
+  REFERENCES `sa44team8ca`.`leave_type` (`leave_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `sa44team8ca`.`application` 
+ADD INDEX `user_id_idx` (`user_id` ASC);
+ALTER TABLE `sa44team8ca`.`application` 
+ADD CONSTRAINT `user_id`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `sa44team8ca`.`user` (`user_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `sa44team8ca`.`employee` 
+ADD INDEX `employee_id_idx` (`employee_id` ASC),
+ADD INDEX `manager_id_idx` (`manager_id` ASC);
+ALTER TABLE `sa44team8ca`.`employee` 
+ADD CONSTRAINT `employee_id`
+  FOREIGN KEY (`employee_id`)
+  REFERENCES `sa44team8ca`.`user` (`employee_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `manager_id`
+  FOREIGN KEY (`manager_id`)
+  REFERENCES `sa44team8ca`.`user` (`employee_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+ALTER TABLE `sa44team8ca`.`employee` 
+ADD UNIQUE INDEX `employee_id_UNIQUE` (`employee_id` ASC);
+
+
+ALTER TABLE `sa44team8ca`.`user` 
+ADD INDEX `role_id_idx` (`role_id` ASC);
+ALTER TABLE `sa44team8ca`.`user` 
+ADD CONSTRAINT `role_id`
+  FOREIGN KEY (`role_id`)
+  REFERENCES `sa44team8ca`.`role` (`role_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

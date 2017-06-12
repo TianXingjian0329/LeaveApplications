@@ -11,9 +11,9 @@ import edu.iss.sa44team8laps.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	@Query("SELECT u FROM user u WHERE u.userid=:un AND u.password=:pwd")
+	@Query("SELECT u FROM User u WHERE u.userid=:un AND u.password=:pwd")
 	User findUserByNamePwd(@Param("un") Integer uname, @Param("pwd") String pwd);
 	
-	@Query("SELECT u FROM user u WHERE u.name=:un")
+	@Query("SELECT u FROM User u WHERE u.name=:un")
 	User findUserByName(@Param("un") String uname);
 }
