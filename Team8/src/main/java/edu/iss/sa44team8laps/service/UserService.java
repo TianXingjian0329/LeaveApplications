@@ -8,7 +8,7 @@ import edu.iss.sa44team8laps.model.User;
 public interface UserService {
 	ArrayList<User> findAllUsers();
 	
-	User findUser(int userId);
+	User findUser(Integer userId);
 
 	User createUser(User user);
 
@@ -22,5 +22,5 @@ public interface UserService {
 //
 //	ArrayList<String> findManagerNameByUID(int userId);
 	
-	User authenticate(int uname, String pwd);
+	User authenticate(Integer uname, String pwd);
 }

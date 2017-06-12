@@ -36,7 +36,5 @@
     <td>Please Login</td>
   </tr>
 </table>
-<ul>
-<li><input style="width:70%"  type="button" Value="Login"></li>
-</ul>
+
 

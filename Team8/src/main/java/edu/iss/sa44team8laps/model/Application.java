@@ -2,14 +2,32 @@ package edu.iss.sa44team8laps.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="application")
 public class Application {
-	private int ApplicationId;
-	private int UserId;
-	private int LeaveId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="application_id")
+	private Integer ApplicationId;
+	@Column(name="user_id")
+	private Integer UserId;
+	@Column(name="leave_id")
+	private Integer LeaveId;
+	@Column(name="date_of_application")
 	private Date LeaveDate;
-	private int LeavePeriod;
+	@Column(name="period")
+	private Integer LeavePeriod;
+	@Column(name="status")
 	private String status;
+	@Column(name="reason")
 	private String reason;
+	@Column(name="manager_comments")
 	private String comment;
 	
 	public Application(int applicationId, int userId, int leaveId, Date leaveDate, int leavePeriod, String status,

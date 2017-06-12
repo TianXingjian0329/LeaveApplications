@@ -1,9 +1,23 @@
 package edu.iss.sa44team8laps.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user_role")
 public class UserRole {
-	private int UserRoleId;
-	private int UserId;
-	private int RoleId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer UserRoleId;
+	@Column(name="user_id")
+	private Integer UserId;
+	@Column(name="role_id")
+	private Integer RoleId;
 	
 	public UserRole(int userRoleId, int userId, int roleId) {
 		super();

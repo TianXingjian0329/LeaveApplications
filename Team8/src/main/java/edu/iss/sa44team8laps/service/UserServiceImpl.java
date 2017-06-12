@@ -26,10 +26,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User findUser(int userId) {
+	public User findUser(Integer userId) {
 		// TODO Auto-generated method stub
-		User ul=(User)userRepository.findUserById(userId);
+		User ul=(User)userRepository.findOne(userId);
 		return ul;
+		
 	}
 
 	@Override
@@ -78,10 +79,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User authenticate(int uname, String pwd) {
+	public User authenticate(Integer uname, String pwd) {
 		// TODO Auto-generated method stub
-		User us= userRepository.findUserByNamePwd(uname, pwd);
-		return us;
+//		User us= userRepository.findOne(uname);
+		return null;
+		
 	}
 
 }

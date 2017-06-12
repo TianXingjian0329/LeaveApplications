@@ -1,8 +1,21 @@
 package edu.iss.sa44team8laps.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="employee")
 public class Employee {
-	private int EmployeeId;
-	private int ManagerId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "employee_id")
+	private Integer EmployeeId;
+	@Column(name="manager_id")
+	private Integer ManagerId;
 	
 	public Employee(int employeeId, int managerId) {
 		super();
