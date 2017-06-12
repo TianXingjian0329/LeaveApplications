@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User findUser(Integer userId) {
+	public User findUserById(Integer userId) {
 		// TODO Auto-generated method stub
 		User ul=(User)userRepository.findOne(userId);
 		return ul;
@@ -55,35 +55,21 @@ public class UserServiceImpl implements UserService {
 		userRepository.delete(user);
 	}
 
-//	@Override
-//	@Transactional
-//	public ArrayList<Role> findRolesForUser(int userId) {
-//		// TODO Auto-generated method stub
-//		
-//		return null;
-//	}
-//
-//	@Override
-//	@Transactional
-//	public ArrayList<String> findRoleNamesForUser(int userId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	@Transactional
-//	public ArrayList<String> findManagerNameByUID(int userId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	@Override
 	@Transactional
 	public User authenticate(Integer uname, String pwd) {
 		// TODO Auto-generated method stub
-//		User us= userRepository.findOne(uname);
-		return null;
+		User us= userRepository.findUserByNamePwd(uname, pwd);
+		return us;
 		
+	}
+
+	@Override
+	public User findUserByName(String name) {
+		// TODO Auto-generated method stub
+		User us=userRepository.findUserByName(name);
+		return us;
 	}
 
 }

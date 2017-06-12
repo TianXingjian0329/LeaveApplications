@@ -18,12 +18,8 @@ public interface EmployeeService {
 
 	Employee changeEmployee(Employee emp);
 
-	void removeEmployeeById(int eid);
+	void removeEmployee(Employee emp);
 	
-	ArrayList<String> findAllManagerNames();
-	
-	ArrayList<Employee> findAllManagers();
-
 	ArrayList<Employee> findSubordinates(int mid);
 	
 }

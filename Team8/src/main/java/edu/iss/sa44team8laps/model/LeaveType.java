@@ -18,18 +18,15 @@ public class LeaveType {
 	private String LeaveName;
 	@Column(name="leave_desc")
 	private String LeaveDescription;
+	@Column(name="no_of_days")
+	private Integer days;
 	
-	public LeaveType(int leaveId, String leaveName, String leaveDescription) {
+	public LeaveType(int leaveId, String leaveName, String leaveDescription, int days) {
 		super();
 		LeaveId = leaveId;
 		LeaveName = leaveName;
 		LeaveDescription = leaveDescription;
-	}
-	public int getLeaveId() {
-		return LeaveId;
-	}
-	public void setLeaveId(int leaveId) {
-		LeaveId = leaveId;
+		this.days=days;
 	}
 	public String getLeaveName() {
 		return LeaveName;
@@ -42,6 +39,15 @@ public class LeaveType {
 	}
 	public void setLeaveDescription(String leaveDescription) {
 		LeaveDescription = leaveDescription;
+	}
+	public Integer getDays() {
+		return days;
+	}
+	public void setDays(Integer days) {
+		this.days = days;
+	}
+	public void setLeaveId(Integer leaveId) {
+		LeaveId = leaveId;
 	}
 	
 }
