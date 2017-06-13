@@ -15,9 +15,6 @@
 					<li>
 							<a href="${pageContext.request.contextPath}/admin/managele">Manage Leave Entitlement</a>
 					</li>
-					<li>
-							<a href="${pageContext.request.contextPath}/admin/manageah">Manage Approval Hierachy</a>
-					</li>
 				</c:if>
 				<c:if test="${sessionScope.USERSESSION.user.type = 'manager' }">
 					<li>

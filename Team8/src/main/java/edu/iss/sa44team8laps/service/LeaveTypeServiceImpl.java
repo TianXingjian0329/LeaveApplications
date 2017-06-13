@@ -51,4 +51,11 @@ public class LeaveTypeServiceImpl implements LeaveTypeService {
 		ltRepository.delete(lt);
 	}
 
+	@Override
+	public ArrayList<LeaveType> findLeaveTypesByRoleName(String name) {
+		// TODO Auto-generated method stub
+		ArrayList<LeaveType> ltlist= ltRepository.findLeaveTypeByRole(name);
+		return ltlist;
+	}
+
 }

@@ -19,8 +19,8 @@ public class LeaveType {
 	private Integer LeaveId;
 	@Column(name="leave_type")
 	private String LeaveName;
-	@Column(name="leave_desc")
-	private String LeaveDescription;
+	@Column(name="role_name")
+	private String RoleName;
 	@Column(name="leave_days")
 	private Integer days;
 	@OneToMany(mappedBy="leaveType")
@@ -32,11 +32,11 @@ public class LeaveType {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public LeaveType(int leaveId, String leaveName, String leaveDescription, int days) {
+	public LeaveType(int leaveId, String leaveName, String rolename, int days) {
 		super();
 		LeaveId = leaveId;
 		LeaveName = leaveName;
-		LeaveDescription = leaveDescription;
+		RoleName = rolename;
 		this.days=days;
 	}
 	public String getLeaveName() {
@@ -45,12 +45,7 @@ public class LeaveType {
 	public void setLeaveName(String leaveName) {
 		LeaveName = leaveName;
 	}
-	public String getLeaveDescription() {
-		return LeaveDescription;
-	}
-	public void setLeaveDescription(String leaveDescription) {
-		LeaveDescription = leaveDescription;
-	}
+
 	public Integer getDays() {
 		return days;
 	}
@@ -68,6 +63,12 @@ public class LeaveType {
 	}
 	public Integer getLeaveId() {
 		return LeaveId;
+	}
+	public String getRoleName() {
+		return RoleName;
+	}
+	public void setRoleName(String roleName) {
+		RoleName = roleName;
 	}
 	
 }

@@ -13,4 +13,7 @@ public interface LeaveTypeRepository extends JpaRepository<LeaveType, Integer> {
 
 	@Query("SELECT u FROM LeaveType u WHERE u.LeaveName=:un")
 	LeaveType findLeaveTypeByName(@Param("un") String uname);
+	
+	@Query("SELECT u FROM LeaveType u WHERE u.RoleName=:un")
+	ArrayList<LeaveType> findLeaveTypeByRole(@Param("un") String rname);
 }
