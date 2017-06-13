@@ -10,6 +10,6 @@ import org.springframework.data.repository.query.Param;
 import edu.iss.sa44team8laps.model.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Integer> {
-	@Query("SELECT u FROM Role u WHERE u.role_name=:un")
+	@Query("SELECT u FROM Role u WHERE u.RoleName=:un")
 	Role findRoleByRoleName(@Param("un") String eid);
 }

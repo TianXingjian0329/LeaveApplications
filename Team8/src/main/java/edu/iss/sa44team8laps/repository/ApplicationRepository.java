@@ -10,6 +10,6 @@ import edu.iss.sa44team8laps.model.Application;
 
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
 
-	@Query("SELECT u FROM Application u WHERE u.user_id=?1")
-	ArrayList<Application> findAppByUserId(Integer uname);
+	@Query("SELECT u FROM Application u WHERE u.UserId = :uname")
+	ArrayList<Application> findAppByUserId(@Param("uname") Integer uname);
 }

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Leave_Type")
+@Table(name="leave_type")
 public class LeaveType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class LeaveType {
 	private String LeaveName;
 	@Column(name="leave_desc")
 	private String LeaveDescription;
-	@Column(name="no_of_days")
+	@Column(name="leave_days")
 	private Integer days;
 	
 	public LeaveType(int leaveId, String leaveName, String leaveDescription, int days) {

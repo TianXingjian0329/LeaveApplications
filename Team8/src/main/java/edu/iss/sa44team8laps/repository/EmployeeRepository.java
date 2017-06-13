@@ -10,6 +10,6 @@ import edu.iss.sa44team8laps.model.Application;
 import edu.iss.sa44team8laps.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-	@Query("SELECT u FROM Employee u WHERE u.manager_id=:un")
+	@Query("SELECT u FROM Employee u WHERE u.ManagerId=:un")
 	ArrayList<Employee> findEmpByManagerId(@Param("un") Integer eid);
 }
