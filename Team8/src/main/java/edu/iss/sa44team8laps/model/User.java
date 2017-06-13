@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,11 +17,11 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "userid")
+	@Column(name = "user_id")
 	private Integer UserId;
-	@Column(name="employee_id")
-	private String UserPassword;
 	@Column(name="pass_word")
+	private String UserPassword;
+	@Column(name="employee_id")
 	private int EmployeeId;
 	
 	@Column(name="name")
@@ -30,6 +31,7 @@ public class User {
 	@OneToMany(mappedBy = "Userid")
 	private Set<Application> application;
 	@ManyToOne
+	@JoinColumn(name="role_id", insertable=false, updatable=false)
 	private Role role;
 	
 	public User(){}

@@ -26,6 +26,13 @@ public class Role {
 	private Set<User> users; 
 
 	
+	
+	
+	public Role() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Role(int roleId, String roleName, String roleDescription) {
 		super();
 		RoleId = roleId;

@@ -19,6 +19,12 @@ public class Employee {
 	@Column(name="manager_id")
 	private Integer ManagerId;
 	
+	
+	
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Employee(int employeeId, int managerId) {
 		super();
 		EmployeeId = employeeId;

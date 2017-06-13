@@ -39,17 +39,23 @@ public class CommonController {
 			return mav;
 		UserSession us = new UserSession();
 		if (String.valueOf(user.getUserId()) != null && String.valueOf(user.getUserPassword()) != null) {
-			User u = uService.authenticate(user.getUserId(), user.getUserPassword());
+			User u = uService.authenticate(user.getUserName(), user.getUserPassword());
+			
 			us.setUser(u);
 			// PUT CODE FOR SETTING SESSION ID
 			us.setSessionId(session.getId());
-			int empId=u.getEmployeeId();
-			Employee emp=eService.findEmployeeById(empId);
-			if(String.valueOf(emp.getManagerId())!=null){
-				mav=new ModelAndView("redirect:/manager");
+			if(u.getEmployeeId()==0){
+				mav=new ModelAndView("redirect:/admin");
 			}
 			else{
-				mav = new ModelAndView("redirect:/employee");
+				int empId=u.getEmployeeId();
+				Employee emp=eService.findEmployeeById(empId);
+				if(String.valueOf(emp.getManagerId())!=null){
+					mav=new ModelAndView("redirect:/manager");
+				}
+				else{
+					mav = new ModelAndView("redirect:/employee");
+				}				
 			}
 			
 		} else {

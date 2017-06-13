@@ -9,11 +9,11 @@
 	<table class="framed" >
 		<tr>
 			<td>
-			<spring:message code="fieldLabel.username" /></td>
+			<spring:message code="Username:" /></td>
 			<td colspan="3"><form:input path="UserName" size="40" /></td>
 		</tr>
 		<tr>
-			<td><spring:message code="fieldLabel.password" /></td>
+			<td><spring:message code="Password:" /></td>
 			<td colspan="3"><form:password path="UserPassword" size="40" /></td>
 		</tr>
 		<tr>

@@ -26,6 +26,12 @@ public class LeaveType {
 	@OneToMany(mappedBy="leaveType")
 	private Set<Application> application;
 	
+	
+	
+	public LeaveType() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public LeaveType(int leaveId, String leaveName, String leaveDescription, int days) {
 		super();
 		LeaveId = leaveId;

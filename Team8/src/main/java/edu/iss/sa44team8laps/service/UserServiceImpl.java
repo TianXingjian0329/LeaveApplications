@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User authenticate(Integer uname, String pwd) {
+	public User authenticate(String uname, String pwd) {
 		// TODO Auto-generated method stub
 		User us= userRepository.findUserByNamePwd(uname, pwd);
 		return us;
@@ -66,6 +66,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public User findUserByName(String name) {
 		// TODO Auto-generated method stub
 		User us=userRepository.findUserByName(name);

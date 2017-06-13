@@ -25,5 +25,5 @@ public interface UserService {
 //
 //	ArrayList<String> findManagerNameByUID(int userId);
 	
-	User authenticate(Integer uname, String pwd);
+	User authenticate(String uname, String pwd);
 }
