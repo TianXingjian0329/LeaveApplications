@@ -1,5 +1,7 @@
 package edu.iss.sa44team8laps.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,22 +41,30 @@ public class CommonController {
 			return mav;
 		UserSession us = new UserSession();
 		if (String.valueOf(user.getUserId()) != null && String.valueOf(user.getUserPassword()) != null) {
-			User u = uService.authenticate(user.getUserName(), user.getUserPassword());
-			
+			User u = uService.authenticate(user.getUserName(), user.getUserPassword());			
 			us.setUser(u);
 			// PUT CODE FOR SETTING SESSION ID
 			us.setSessionId(session.getId());
 			if(u.getEmployeeId()==0){
+				us.setType("admin");
 				mav=new ModelAndView("redirect:/admin");
 			}
 			else{
 				int empId=u.getEmployeeId();
-				Employee emp=eService.findEmployeeById(empId);
-				if(String.valueOf(emp.getManagerId())!=null){
-					mav=new ModelAndView("redirect:/manager");
+				boolean isManager=false;					
+				ArrayList<Employee> elist=eService.findAllEmployees();
+				for(int i=0;i<elist.size();i++){
+					if(elist.get(i).getManagerId()==empId){
+						isManager=true;
+					}
+				}
+				if(isManager==true){
+					us.setType("manager");
+					mav =new ModelAndView("redirect:/manager");
 				}
 				else{
-					mav = new ModelAndView("redirect:/employee");
+					us.setType("employee");
+					mav=new ModelAndView("redirect:/employee");
 				}				
 			}
 			

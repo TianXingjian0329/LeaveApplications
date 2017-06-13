@@ -1,34 +1,34 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-	<c:if test="${sessionScope.USERSESSION.user.roleSet.size() gt 0}">
+	<c:if test="${sessionScope.USERSESSION.user.type != null}">
 	<ul>
-		<c:forEach var="role" items="${sessionScope.USERSESSION.user.roleSet}">
-			<c:choose>
-				<c:when test="${role.RoleId eq 'admin' }">
+		
+			
+				<c:if test="${sessionScope.USERSESSION.user.type = 'admin' }">
 					<li>
-							<input id="" type="button" value="Manager Leave Types">
+							<a href="${pageContext.request.contextPath}/admin/managelt">Manage Leave Types </a>
 					</li>
 					<li>
-							<input id="" type="button" value="Manager Staff">
+							<a href="${pageContext.request.contextPath}/admin/managestaff">Manage Staff</a>
 					</li>
 					<li>
-							<input id="" type="button" value="Manage Leave Entitlement">
+							<a href="${pageContext.request.contextPath}/admin/managele">Manage Leave Entitlement</a>
 					</li>
 					<li>
-							<input id="" type="button" value="Manage Approval Hierachy">
+							<a href="${pageContext.request.contextPath}/admin/manageah">Manage Approval Hierachy</a>
 					</li>
-				</c:when>
-				<c:when test="${role.RoleId eq 'staff' }">
+				</c:if>
+				<c:if test="${sessionScope.USERSESSION.user.type = 'manager' }">
 					<li>
 					</li>
-				</c:when>
-				<c:when test="${role.RoleId eq 'Manager' }">
+				</c:if>
+				<c:if test="${sessionScope.USERSESSION.user.type = 'employee' }">
 					<li>
 					</li>
-				</c:when>
-			</c:choose>
-		</c:forEach>
+				</c:if>
+			
+		
 		</ul>
 	</c:if>
 <table>

@@ -17,16 +17,16 @@ public class UserSession {
 
 	private String sessionId = null;
 	private User user = null;
-	private Employee employee=null;
+	private String type=null;
 	
 	public UserSession() {
 		super();
 	}
-	public UserSession(String sessionId, User user, Employee employee) {
+	public UserSession(String sessionId, User user, String type) {
 		super();
 		this.sessionId = sessionId;
 		this.user = user;
-		this.employee=employee;
+		this.type=type;
 	}
 	public String getSessionId() {
 		return sessionId;
@@ -43,12 +43,13 @@ public class UserSession {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Employee getEmployee() {
-		return employee;
+	public String getType() {
+		return type;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setType(String type) {
+		this.type = type;
 	}
+
 
 	
 }
