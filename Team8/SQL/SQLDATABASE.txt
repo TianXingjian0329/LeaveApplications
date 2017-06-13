@@ -93,3 +93,5 @@ ADD CONSTRAINT `role_id`
 ALTER TABLE `sa44team8ca`.`leave_type` 
 ADD COLUMN `leave_days` INT(11) NULL AFTER `leave_desc`;
  
+ALTER TABLE `sa44team8ca`.`leave_type` 
+CHANGE COLUMN `leave_desc` `role_name` VARCHAR(45) NULL DEFAULT NULL ;
