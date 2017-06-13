@@ -1,10 +1,14 @@
 package edu.iss.sa44team8laps.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +22,9 @@ public class Role {
 	private String RoleName;
 	@Column(name="role_desc")
 	private String RoleDescription;
+	@OneToMany 
+	private Set<User> users; 
+
 	
 	public Role(int roleId, String roleName, String roleDescription) {
 		super();
@@ -25,12 +32,7 @@ public class Role {
 		RoleName = roleName;
 		RoleDescription = roleDescription;
 	}
-	public int getRoleId() {
-		return RoleId;
-	}
-	public void setRoleId(int roleId) {
-		RoleId = roleId;
-	}
+	
 	public String getRoleName() {
 		return RoleName;
 	}
@@ -42,6 +44,22 @@ public class Role {
 	}
 	public void setRoleDescription(String roleDescription) {
 		RoleDescription = roleDescription;
+	}
+
+	public void setRoleId(Integer roleId) {
+		RoleId = roleId;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
+	public Integer getRoleId() {
+		return RoleId;
 	}
 	
 }

@@ -17,6 +17,7 @@ public interface UserService {
 	User changeUser(User user);
 
 	void removeUser(User user);
+
 //
 //	ArrayList<Role> findRolesForUser(int userId);
 //

@@ -29,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Transactional
 	public Employee findEmployeeById(int eid) {
 		// TODO Auto-generated method stub
-		return empRepository.findOne(eid);
+		return empRepository.findEmpByID(eid);
 	}
 
 	@Override

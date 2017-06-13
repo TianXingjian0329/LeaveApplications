@@ -1,41 +1,54 @@
 package edu.iss.sa44team8laps.controller;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
-/**
- * Servlet implementation class UserSession
- */
-@WebServlet("/UserSession")
-public class UserSession extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserSession() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+import edu.iss.sa44team8laps.model.Employee;
+import edu.iss.sa44team8laps.model.Role;
+import edu.iss.sa44team8laps.model.User;
+
+
+@Component
+@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
+public class UserSession {
+
+	private String sessionId = null;
+	private User user = null;
+	private Employee employee=null;
+	
+	public UserSession() {
+		super();
+	}
+	public UserSession(String sessionId, User user, Employee employee) {
+		super();
+		this.sessionId = sessionId;
+		this.user = user;
+		this.employee=employee;
+	}
+	public String getSessionId() {
+		return sessionId;
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	
 }

@@ -8,7 +8,7 @@
 <h1>
 	Welcome to Leave Application!
 </h1>
-<h2><a href="${pageContext.request.contextPath}/login">Login </a></h2>
+<h2><a href="${pageContext.request.contextPath}/home/login">Login </a></h2>
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>

@@ -1,10 +1,13 @@
 package edu.iss.sa44team8laps.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,8 @@ public class LeaveType {
 	private String LeaveDescription;
 	@Column(name="leave_days")
 	private Integer days;
+	@OneToMany(mappedBy="leaveType")
+	private Set<Application> application;
 	
 	public LeaveType(int leaveId, String leaveName, String leaveDescription, int days) {
 		super();
@@ -48,6 +53,15 @@ public class LeaveType {
 	}
 	public void setLeaveId(Integer leaveId) {
 		LeaveId = leaveId;
+	}
+	public Set<Application> getApplication() {
+		return application;
+	}
+	public void setApplication(Set<Application> application) {
+		this.application = application;
+	}
+	public Integer getLeaveId() {
+		return LeaveId;
 	}
 	
 }

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="application")
@@ -29,9 +30,13 @@ public class Application {
 	private String reason;
 	@Column(name="manager_comments")
 	private String comment;
+	@ManyToOne
+	private User Userid;
+	@ManyToOne
+	private LeaveType leaveType;
 	
 	public Application(int applicationId, int userId, int leaveId, Date leaveDate, int leavePeriod, String status,
-			String reason, String comment) {
+			String reason, String comment,User user) {
 		super();
 		ApplicationId = applicationId;
 		UserId = userId;
@@ -41,54 +46,90 @@ public class Application {
 		this.status = status;
 		this.reason = reason;
 		this.comment = comment;
+		this.Userid=user;
 	}
-	public int getApplicationId() {
+
+	public Integer getApplicationId() {
 		return ApplicationId;
 	}
-	public void setApplicationId(int applicationId) {
+
+	public void setApplicationId(Integer applicationId) {
 		ApplicationId = applicationId;
 	}
-	public int getUserId() {
+
+	public Integer getUserId() {
 		return UserId;
 	}
-	public void setUserId(int userId) {
+
+	public void setUserId(Integer userId) {
 		UserId = userId;
 	}
-	public int getLeaveId() {
+
+	public Integer getLeaveId() {
 		return LeaveId;
 	}
-	public void setLeaveId(int leaveId) {
+
+	public void setLeaveId(Integer leaveId) {
 		LeaveId = leaveId;
 	}
+
 	public Date getLeaveDate() {
 		return LeaveDate;
 	}
+
 	public void setLeaveDate(Date leaveDate) {
 		LeaveDate = leaveDate;
 	}
-	public int getLeavePeriod() {
+
+	public Integer getLeavePeriod() {
 		return LeavePeriod;
 	}
-	public void setLeavePeriod(int leavePeriod) {
+
+	public void setLeavePeriod(Integer leavePeriod) {
 		LeavePeriod = leavePeriod;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public String getReason() {
 		return reason;
 	}
+
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
+
 	public String getComment() {
 		return comment;
 	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+
+
+	public User getUserid() {
+		return Userid;
+	}
+
+	public void setUserid(User userid) {
+		Userid = userid;
+	}
+
+	public LeaveType getLeaveType() {
+		return leaveType;
+	}
+
+	public void setLeaveType(LeaveType leaveType) {
+		this.leaveType = leaveType;
+	}
+	
 	
 }
