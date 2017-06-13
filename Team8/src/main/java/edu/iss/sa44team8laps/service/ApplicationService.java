@@ -5,7 +5,7 @@ import java.util.Date;
 import edu.iss.sa44team8laps.model.*;
 public interface ApplicationService {
 	ArrayList<Application> findAllApplications();
-	ArrayList<Application> findAppById(Integer id);
+	Application findAppById(Integer id);
 	ArrayList<Application> findAppByUserId(Integer uid);
 	ArrayList<Application> findAppByUserName(String name);
 	ArrayList<Application> findAppByManager(Integer mid);

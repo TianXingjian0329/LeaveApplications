@@ -73,6 +73,13 @@ public class UserServiceImpl implements UserService {
 		return us;
 	}
 
+	@Override
+	@Transactional
+	public User findUserByEmpId(Integer id) {
+		// TODO Auto-generated method stub
+		return userRepository.findUserByEmpId(id);
+	}
+
 	
 
 }

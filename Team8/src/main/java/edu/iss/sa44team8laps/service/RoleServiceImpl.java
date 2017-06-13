@@ -51,6 +51,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
+	@Transactional
 	public Role findRoleByName(String name) {
 		// TODO Auto-generated method stub
 		return roleRepository.findRoleByRoleName(name);

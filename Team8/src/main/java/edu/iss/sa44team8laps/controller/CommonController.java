@@ -47,7 +47,7 @@ public class CommonController {
 			us.setSessionId(session.getId());
 			if(u.getEmployeeId()==0){
 				us.setType("admin");
-				mav=new ModelAndView("redirect:/admin");
+				mav=new ModelAndView("redirect:/admin/employeelist");
 			}
 			else{
 				int empId=u.getEmployeeId();

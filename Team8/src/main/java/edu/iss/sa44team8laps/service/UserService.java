@@ -11,6 +11,8 @@ public interface UserService {
 	User findUserById(Integer userId);
 	
 	User findUserByName(String name);
+	
+	User findUserByEmpId(Integer id);
 
 	User createUser(User user);
 

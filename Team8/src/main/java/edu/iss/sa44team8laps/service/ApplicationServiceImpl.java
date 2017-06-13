@@ -34,9 +34,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 	@Override
 	@Transactional
-	public ArrayList<Application> findAppById(Integer id) {
+	public Application findAppById(Integer id) {
 		// TODO Auto-generated method stub
-		ArrayList<Application> app=appRepository.findAppByUserId(id);
+		Application app=appRepository.findOne(id);
 		return app;
 	}
 
@@ -94,7 +94,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		appRepository.delete(app);
 	}
 
-
+	@Override
 	@Transactional
 	public ArrayList<Application> listHistoryByUserIdBeforeTime(Integer uid, Date date) {
 		// TODO Auto-generated method stub

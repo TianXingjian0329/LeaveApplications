@@ -26,7 +26,7 @@ public class UserSession {
 		super();
 		this.sessionId = sessionId;
 		this.user = user;
-		this.type=type;
+		this.type = type;
 	}
 	public String getSessionId() {
 		return sessionId;

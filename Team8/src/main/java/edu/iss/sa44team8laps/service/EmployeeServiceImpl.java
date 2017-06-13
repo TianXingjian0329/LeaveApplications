@@ -70,6 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
+	@Transactional
 	public void removeEmployee(Employee emp) {
 		// TODO Auto-generated method stub
 		empRepository.delete(emp);

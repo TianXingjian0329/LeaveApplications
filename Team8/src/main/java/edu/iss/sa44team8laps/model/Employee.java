@@ -14,6 +14,8 @@ import javax.persistence.Table;
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer Id;
 	@Column(name = "employee_id")
 	private Integer EmployeeId;
 	@Column(name="manager_id")
@@ -25,22 +27,30 @@ public class Employee {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Employee(int employeeId, int managerId) {
+	public Employee(int id, int employeeId, int managerId) {
 		super();
+		Id=id;
 		EmployeeId = employeeId;
 		ManagerId = managerId;
 	}
-	public int getEmployeeId() {
+	public Integer getId() {
+		return Id;
+	}
+	public void setId(Integer id) {
+		Id = id;
+	}
+	public Integer getEmployeeId() {
 		return EmployeeId;
 	}
-	public void setEmployeeId(int employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		EmployeeId = employeeId;
 	}
-	public int getManagerId() {
+	public Integer getManagerId() {
 		return ManagerId;
 	}
-	public void setManagerId(int managerId) {
+	public void setManagerId(Integer managerId) {
 		ManagerId = managerId;
 	}
+
  
 }
