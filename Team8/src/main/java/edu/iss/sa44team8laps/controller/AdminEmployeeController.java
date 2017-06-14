@@ -131,7 +131,7 @@ public class AdminEmployeeController {
 		employee.setEmployeeId(createEmployee.getEmployeeId());
 		employee.setManagerId(u.findUserByName(createEmployee.getManagerName().trim()).getEmployeeId());
 		employee.setId((employeeList.get(employeeList.size() - 1)).getId() + 1);
-		e.createEmployee(employee);
+		e.createEmployee(employee); 
 		
 		mav.setViewName("redirect:/admin/employeelist");
 		redirectAttributes.addFlashAttribute("message", message);
