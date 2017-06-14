@@ -27,7 +27,7 @@ public class User {
 	private String UserName;
 	@Column(name="role_id")
 	private Integer roleid;
-	@OneToMany(mappedBy = "Userid")
+	@OneToMany(mappedBy = "User")
 	private Set<Application> application;
 	@ManyToOne
 	@JoinColumn(name="role_id", insertable=false, updatable=false)

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
@@ -30,10 +31,19 @@ public class Application {
 	@Column(name="manager_comments")
 	private String comment;
 	@ManyToOne
-	private User Userid;
+	@JoinColumn(name="user_id", insertable = false, updatable =false)
+	private User User;
 	@ManyToOne
+	@JoinColumn(name="leave_id", insertable = false, updatable =false)
 	private LeaveType leaveType;
 	
+	
+	
+	public Application() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Application(int applicationId, int userId, int leaveId, Date leaveDate, int leavePeriod, String status,
 			String reason, String comment,User user) {
 		super();
@@ -45,7 +55,7 @@ public class Application {
 		this.status = status;
 		this.reason = reason;
 		this.comment = comment;
-		this.Userid=user;
+		this.User=user;
 	}
 
 	public Integer getApplicationId() {
@@ -114,12 +124,12 @@ public class Application {
 
 
 
-	public User getUserid() {
-		return Userid;
+	public User getUser() {
+		return User;
 	}
 
-	public void setUserid(User userid) {
-		Userid = userid;
+	public void setUser(User userid) {
+		User = userid;
 	}
 
 	public LeaveType getLeaveType() {

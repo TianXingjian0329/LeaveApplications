@@ -70,7 +70,7 @@ public class CommonController {
 				}
 				else{
 					us.setType("employee");
-					mav=new ModelAndView("redirect:/employee");
+					mav=new ModelAndView("redirect:/employee/history");
 				}				
 			}
 			

@@ -48,7 +48,7 @@ public class AdminLeavTypeController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String newUserPage() {
-		return "user-new";
+		return "employee-new";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
