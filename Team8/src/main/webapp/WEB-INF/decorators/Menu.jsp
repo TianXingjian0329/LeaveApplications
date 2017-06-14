@@ -18,11 +18,12 @@
 				</c:if>
 				<c:if test="${sessionScope.USERSESSION.type == 'manager' }">
 					<li>
-					<a href="${pegeContext.request.contextPath }/manager/pending" >View Applications</a>
+					<a href="${pegeContext.request.contextPath }/manager/pending" >View Applications for Approval</a>
 					</li>
 				</c:if>
 				<c:if test="${sessionScope.USERSESSION.type == 'employee' }">
 					<li>
+					<a href="${pegeContext.request.contextPath }/employee/history" >View Applications</a>
 					</li>
 				</c:if>
 				<li>

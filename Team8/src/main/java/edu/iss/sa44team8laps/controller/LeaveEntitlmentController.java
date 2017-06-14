@@ -31,7 +31,7 @@ import edu.iss.sa44team8laps.service.UserService;
 
 
 @Controller
-@RequestMapping(value= "/entitlement")
+@RequestMapping(value= "/admin/entitlement")
 public class LeaveEntitlmentController {
 	
 	@Autowired
@@ -53,23 +53,23 @@ public class LeaveEntitlmentController {
 		
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.GET )
-	public ModelAndView editApp(@RequestParam Integer applicationid) {
+	@RequestMapping(value = "/update/{applicationid}", method = RequestMethod.GET )
+	public ModelAndView editApp(@PathVariable Integer applicationid) {
 //		LOGGER.info("Testing "+applicationid);
 		Application application = aService.findAppById(applicationid);
-		ModelAndView mav = new ModelAndView("entitlement_update","Application",application);
+		ModelAndView mav = new ModelAndView("entitlement-update","application",application);
 		return mav;
 	}
 	
 	//link to after update
 		@RequestMapping(value = "/update/{applicationid}", method = RequestMethod.POST)
-		public ModelAndView updateStaff(@ModelAttribute("application") @Valid Application application,
+		public ModelAndView updateStaff(@ModelAttribute @Valid Application application,
 				BindingResult result, @PathVariable Integer applicationid,
 				final RedirectAttributes redirectAttributes) {
 			if (result.hasErrors())
 				return new ModelAndView("/update");
 			aService.editApp(application);
-			ModelAndView mav = new ModelAndView("redirect:/entitlement/list");
+			ModelAndView mav = new ModelAndView("redirect:admin/entitlement/list");
 			//System.out.println(application.getApplicationId());
 			
 			return mav;
@@ -83,8 +83,8 @@ public class LeaveEntitlmentController {
 			if (result.hasErrors())
 				return new ModelAndView("/delete");
 			
-			ModelAndView mav = new ModelAndView("redirect:/entitlement/list");
-			System.out.println(application.getApplicationId());
+			ModelAndView mav = new ModelAndView("redirect:admin/entitlement/list");
+			application.getApplicationId();
 			aService.deleteApp(application);
 			return mav;
 		}

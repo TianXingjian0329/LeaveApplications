@@ -83,6 +83,19 @@ import edu.iss.sa44team8laps.service.LeaveTypeService;
 			return mav;
 
 		}
+		@RequestMapping(value = "/withdraw/{id}", method = RequestMethod.GET)
+		public ModelAndView deleteleave(@PathVariable Integer id, final RedirectAttributes redirectAttributes
+				)  {
+
+			ModelAndView mav = new ModelAndView("redirect:/employee/history");
+			Application application = appservice.findAppById(id);
+			String message = "Leave " + application.getApplicationId() + " was successfully withdrawn.";
+			application.setStatus("WITHDRAWN"); 
+			appservice.editApp(application);
+			redirectAttributes.addFlashAttribute("message", message);
+			return mav;
+		}
+		
 
 	}
 	
