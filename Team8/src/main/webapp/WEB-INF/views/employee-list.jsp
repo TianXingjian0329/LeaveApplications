@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h3>User List page</h3>
-<a href="${pageContext.request.contextPath}/admin/managestaff/create">Add
+<a href="${pageContext.request.contextPath}/admin/create">Add
 	User</a>
 <c:if test="${fn:length(employeeList) gt 0}">
 	<table style="cellspacing: 2; cellpadding: 2; border: 1;">

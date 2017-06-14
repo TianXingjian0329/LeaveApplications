@@ -46,6 +46,7 @@ CREATE TABLE `application` (
 
 LOCK TABLES `application` WRITE;
 /*!40000 ALTER TABLE `application` DISABLE KEYS */;
+INSERT INTO `application` VALUES (1,1,1,'2017-02-01',4,'SUBMITTED',',,,',NULL),(2,1,1,'2018-03-08',1,'WITHDRAWN',',,,,,,,',NULL);
 /*!40000 ALTER TABLE `application` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,7 +76,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,1,2),(2,0,0),(3,4,2),(4,5,7),(5,6,7);
+INSERT INTO `employee` VALUES (1,1,2),(2,0,0),(3,4,2),(4,5,7),(5,6,7),(6,8,2);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,6 +102,7 @@ CREATE TABLE `leave_type` (
 
 LOCK TABLES `leave_type` WRITE;
 /*!40000 ALTER TABLE `leave_type` DISABLE KEYS */;
+INSERT INTO `leave_type` VALUES (1,'medic','pro',15),(2,'meidc','nopro',10),(3,'issue','pro',10),(4,'issue','nopro',9),(5,'Xxxxxx','pro',25);
 /*!40000 ALTER TABLE `leave_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +158,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,1,'alex','alex',1),(2,2,'jolene','jolene',1),(3,0,'mya','mya',0),(4,4,'justin','justin',2),(5,5,'mudit','mudit',2),(6,6,'sindu','sindu',1),(7,7,'lucas','lucas',NULL);
+INSERT INTO `user` VALUES (1,1,'alex','alex',1),(2,2,'jolene','jolene',1),(3,0,'mya','mya',0),(4,4,'justin','justin',2),(5,5,'mudit','mudit',2),(6,6,'sindu','sindu',1),(7,7,'lucas','lucas',1),(8,8,'test1','test1',2),(9,9,'test3','test3',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -169,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-13 21:46:38
+-- Dump completed on 2017-06-14 22:37:47
