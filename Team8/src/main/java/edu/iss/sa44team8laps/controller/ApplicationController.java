@@ -22,9 +22,13 @@ import java.util.Calendar;
 	import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.iss.sa44team8laps.javabeans.LeaveHistory;
+import edu.iss.sa44team8laps.javabeans.employeeLeave;
 import edu.iss.sa44team8laps.model.Application;
+import edu.iss.sa44team8laps.model.LeaveType;
+import edu.iss.sa44team8laps.model.User;
 import edu.iss.sa44team8laps.service.ApplicationService;
 import edu.iss.sa44team8laps.service.LeaveTypeService;
+import edu.iss.sa44team8laps.service.RoleService;
 
 
 
@@ -35,7 +39,8 @@ import edu.iss.sa44team8laps.service.LeaveTypeService;
 		private ApplicationService appservice;	
 		@Autowired
 		private LeaveTypeService ltservice;
-
+		@Autowired
+		private RoleService rservice;
 		/**
 		 * COURSE CRUD OPERATIONS
 		 * 
@@ -95,7 +100,92 @@ import edu.iss.sa44team8laps.service.LeaveTypeService;
 			redirectAttributes.addFlashAttribute("message", message);
 			return mav;
 		}
+		@RequestMapping(value = "/createleave", method = RequestMethod.GET)
+		public ModelAndView newLeavePage1(HttpSession session) {
+			ModelAndView mav = new ModelAndView("login");
+			UserSession us=(UserSession)session.getAttribute("USERSESSION");
+			if(us.getSessionId()!=null){
+				mav = new ModelAndView("createleave");
+				ArrayList<String> leavetypes=new ArrayList<String>();
+				employeeLeave el=new employeeLeave();
+				User user=us.getUser();
+				for(LeaveType lt : ltservice.findLeaveTypesByRoleName(user.getRole().getRoleName())){
+					
+					leavetypes.add(lt.getLeaveName());	
+				}
+				
+				
+				ArrayList<Application> apps= appservice.findAllApplications();
+				int appid= apps.get(apps.size()-1).getApplicationId()+1;
+				mav.addObject("newleave", el);
+				mav.addObject("leavetypes", leavetypes);
+				mav.addObject("appid", appid);
+			}
+			
+			return mav;
+		}
+
+		@RequestMapping(value = "/createleave", method = RequestMethod.POST)
+		public ModelAndView createNewApplication(@ModelAttribute @Valid employeeLeave el, BindingResult result,
+				final RedirectAttributes redirectAttributes, HttpSession session) {
+
+			if (result.hasErrors())
+				return new ModelAndView("createleave");
+
+			ModelAndView mav = new ModelAndView();
+			
 		
+			
+			UserSession us = (UserSession) session.getAttribute("USERSESSION");
+					
+			String message = "New Application " + el.getApplicationId() + " was successfully created.";
+			
+			Application app=new Application();
+			app.setApplicationId(el.getApplicationId());
+			app.setLeaveDate(el.getLeaveDate());
+			app.setLeaveId(ltservice.findByName(el.getLeavetype()).getLeaveId());
+			app.setLeavePeriod(el.getLeavePeriod());
+			app.setStatus("SUBMITTED");
+			app.setUserId(us.getUser().getUserId());
+			mav.setViewName("redirect:/employee/history");
+			
+//			application.setApplicationId(application.getApplicationId());
+//			application.setUserId(us.getUser().getUserId());
+	//		application.setStatus("SUBMITTED");
+//			application.setLeaveDate(application.getLeaveDate());
+//			application.setLeavePeriod(application.getLeavePeriod());
+//			application.setReason(application.getReason());
+			
+			appservice.createApp(app);
+			redirectAttributes.addFlashAttribute("message", message);
+			return mav;
+		}
+		@RequestMapping(value = "/Leave/edit/{id}", method = RequestMethod.GET)
+		
+		public ModelAndView editApplicationPage(@PathVariable Integer id){
+		ModelAndView mav = new ModelAndView("staff-Leave-edit");
+		Application application = appservice.findAppById(id);
+			mav.addObject("Application", application);
+			return mav;
+		}
+
+		@RequestMapping(value = "/course/edit/{id}", method = RequestMethod.POST)
+		public ModelAndView editCourse(@ModelAttribute @Valid Application application, BindingResult result, @PathVariable Integer id,
+				final RedirectAttributes redirectAttributes, HttpSession session) {
+			if (result.hasErrors())
+				return new ModelAndView("staff-leave-edit");
+			ModelAndView mav = new ModelAndView();
+			System.out.println("DATES****" + application.getLeaveDate());
+			String message = "New application " + application.getApplicationId() + " was successfully created.";
+			UserSession us = (UserSession) session.getAttribute("USERSESSION");
+			application.setUserId(us.getUser().getUserId());
+			application.setStatus("Submitted");
+			mav.setViewName("redirect:/staff/history");
+			appservice.editApp(application );
+			redirectAttributes.addFlashAttribute("message", message);
+			return mav;
+		}
+
 
 	}
 	

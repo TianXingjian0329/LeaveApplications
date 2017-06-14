@@ -21,12 +21,18 @@
 					<a href="${pegeContext.request.contextPath }/manager/pending" >View Applications for Approval</a>
 					</li>
 					<li>
-					<a href="${pegeContext.request.contextPath }/employee/history" >View Applications</a>
+					<a href="${pageContext.request.contextPath }/employee/history" >View Applications</a>
+					</li>
+					<li>
+					<a href="${pageContext.request.contextPath }/employee/createleave" >Apply for Leave</a>
 					</li>
 				</c:if>
 				<c:if test="${sessionScope.USERSESSION.type == 'employee' }">
 					<li>
-					<a href="${pegeContext.request.contextPath }/employee/history" >View Applications</a>
+					<a href="${pageContext.request.contextPath }/employee/history" >View Applications</a>
+					</li>
+					<li>
+					<a href="${pageContext.request.contextPath }/employee/createleave" >Apply for Leave</a>
 					</li>
 				</c:if>
 				<li>
