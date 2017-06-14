@@ -1,20 +1,19 @@
 package edu.iss.sa44team8laps.controller;
 
 import java.util.ArrayList;
+
 import edu.iss.sa44team8laps.javabeans.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.iss.sa44team8laps.model.Employee;
-import edu.iss.sa44team8laps.model.Role;
 import edu.iss.sa44team8laps.model.User;
 import edu.iss.sa44team8laps.service.EmployeeService;
 import edu.iss.sa44team8laps.service.RoleService;
@@ -51,6 +50,19 @@ public class AdminEmployeeController {
 			
 		}
 		mav.addObject("employeeList", empList);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/deleteemployee/{id}", method = RequestMethod.GET)
+	public ModelAndView deleteEmployee(@PathVariable String id, final RedirectAttributes redirectAttributes) {
+
+		ModelAndView mav = new ModelAndView("redirect:/admin/employeelist");
+		Employee employee = e.findEmployeeById(Integer.valueOf(id));
+		e.removeEmployee(employee);
+//		String message = "The employee " + employee.getEmployeeId() + " was successfully deleted.";
+//		redirectAttributes.addFlashAttribute("message", message);
+		User user=u.findUserByEmpId(employee.getEmployeeId());
+		u.removeUser(user);
 		return mav;
 	}
 

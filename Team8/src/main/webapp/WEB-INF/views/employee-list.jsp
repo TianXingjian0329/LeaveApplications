@@ -29,7 +29,7 @@
 						href="${pageContext.request.contextPath}/admin/managestaff/edit/${employee.empId}"><spring:message
 								code="Edit" /></a></td>
 					<td><a
-						href="${pageContext.request.contextPath}/admin/managestaff/delete/${employee.empId}"><spring:message
+						href="${pageContext.request.contextPath}/admin/deleteemployee/${employee.empId}"><spring:message
 								code="Delete" /></a></td>
 				</tr>
 			</c:forEach>

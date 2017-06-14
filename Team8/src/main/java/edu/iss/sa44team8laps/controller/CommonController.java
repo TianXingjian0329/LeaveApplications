@@ -34,6 +34,12 @@ public class CommonController {
 		model.addAttribute("user", user);
 		return "login";
 	}
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/home/login";
+
+	}
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ModelAndView authenticate(@ModelAttribute User user, HttpSession session, BindingResult result) {
 		ModelAndView mav = new ModelAndView("login");

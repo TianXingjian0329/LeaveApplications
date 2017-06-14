@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name="leave_type")
 public class LeaveType {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name = "leave_id")
 	private Integer LeaveId;
 	@Column(name="leave_type")
@@ -39,30 +39,17 @@ public class LeaveType {
 		RoleName = rolename;
 		this.days=days;
 	}
+	public Integer getLeaveId() {
+		return LeaveId;
+	}
+	public void setLeaveId(Integer leaveId) {
+		LeaveId = leaveId;
+	}
 	public String getLeaveName() {
 		return LeaveName;
 	}
 	public void setLeaveName(String leaveName) {
 		LeaveName = leaveName;
-	}
-
-	public Integer getDays() {
-		return days;
-	}
-	public void setDays(Integer days) {
-		this.days = days;
-	}
-	public void setLeaveId(Integer leaveId) {
-		LeaveId = leaveId;
-	}
-	public Set<Application> getApplication() {
-		return application;
-	}
-	public void setApplication(Set<Application> application) {
-		this.application = application;
-	}
-	public Integer getLeaveId() {
-		return LeaveId;
 	}
 	public String getRoleName() {
 		return RoleName;
@@ -70,5 +57,19 @@ public class LeaveType {
 	public void setRoleName(String roleName) {
 		RoleName = roleName;
 	}
+	public Integer getDays() {
+		return days;
+	}
+	public void setDays(Integer days) {
+		this.days = days;
+	}
+	public Set<Application> getApplication() {
+		return application;
+	}
+	public void setApplication(Set<Application> application) {
+		this.application = application;
+	}
+
+	
 	
 }
