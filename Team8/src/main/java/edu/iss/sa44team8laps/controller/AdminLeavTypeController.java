@@ -2,20 +2,19 @@ package edu.iss.sa44team8laps.controller;
 
 
 import java.util.ArrayList;
-import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 import edu.iss.sa44team8laps.model.LeaveType;
 
@@ -35,11 +34,11 @@ public class AdminLeavTypeController {
 	/*@Autowired
 	private UserValidator uValidator;
 */
-/*	@InitBinder("leavetype")
-	private void initUserBinder(WebDataBinder binder) {
-		binder.addValidators(rValidator);
-	}
-*/
+//	@InitBinder("leavetype")
+//	private void initUserBinder(WebDataBinder binder) {
+//		binder.addValidators();
+//	}
+
 	/**
 	 * USER CRUD OPERATIONS
 	 * 
@@ -47,8 +46,14 @@ public class AdminLeavTypeController {
 	 */
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String newUserPage() {
-		return "employee-new";
+	public ModelAndView newUserPage() {
+		ArrayList<LeaveType> lts=lService.findAllLeaveType();
+		Integer id=lts.get(lts.size()-1).getLeaveId()+1;	
+//		LeaveType lt=new LeaveType();
+//		lt.setLeaveId(id);
+		ModelAndView mav = new ModelAndView("leavetype-new", "leavetype", new LeaveType());
+		mav.addObject("id", id);
+		return mav;
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -56,7 +61,7 @@ public class AdminLeavTypeController {
 			final RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors())
-			return new ModelAndView("user-new");
+			return new ModelAndView("leavetype-list");
 
 		ModelAndView mav = new ModelAndView();
 		String message = "New leave type " + leaveType.getLeaveId() + " was successfully created.";

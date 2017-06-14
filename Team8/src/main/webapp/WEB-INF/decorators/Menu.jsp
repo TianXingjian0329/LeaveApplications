@@ -13,7 +13,7 @@
 							<a href="${pageContext.request.contextPath}/admin/employeelist">Manage Staff</a>
 					</li>
 					<li>
-							<a href="${pageContext.request.contextPath}/admin/managele">Manage Leave Entitlement</a>
+							<a href="${pageContext.request.contextPath}/admin/entitlement/list">Manage Leave Entitlement</a>
 					</li>
 				</c:if>
 				<c:if test="${sessionScope.USERSESSION.type == 'manager' }">
