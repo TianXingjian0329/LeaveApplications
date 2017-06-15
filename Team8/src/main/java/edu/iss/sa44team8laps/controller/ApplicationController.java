@@ -128,14 +128,9 @@ import edu.iss.sa44team8laps.service.RoleService;
 		@RequestMapping(value = "/createleave", method = RequestMethod.POST)
 		public ModelAndView createNewApplication(@ModelAttribute @Valid employeeLeave el, BindingResult result,
 				final RedirectAttributes redirectAttributes, HttpSession session) {
-
 			if (result.hasErrors())
 				return new ModelAndView("createleave");
-
-			ModelAndView mav = new ModelAndView();
-			
-		
-			
+			ModelAndView mav = new ModelAndView();			
 			UserSession us = (UserSession) session.getAttribute("USERSESSION");
 					
 			String message = "New Application " + el.getApplicationId() + " was successfully created.";
@@ -148,13 +143,6 @@ import edu.iss.sa44team8laps.service.RoleService;
 			app.setStatus("SUBMITTED");
 			app.setUserId(us.getUser().getUserId());
 			mav.setViewName("redirect:/employee/history");
-			
-//			application.setApplicationId(application.getApplicationId());
-//			application.setUserId(us.getUser().getUserId());
-	//		application.setStatus("SUBMITTED");
-//			application.setLeaveDate(application.getLeaveDate());
-//			application.setLeavePeriod(application.getLeavePeriod());
-//			application.setReason(application.getReason());
 			
 			appservice.createApp(app);
 			redirectAttributes.addFlashAttribute("message", message);

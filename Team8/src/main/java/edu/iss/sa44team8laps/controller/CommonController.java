@@ -66,7 +66,7 @@ public class CommonController {
 				}
 				if(isManager==true){
 					us.setType("manager");
-					mav =new ModelAndView("redirect:/manager");
+					mav =new ModelAndView("redirect:/manager/pending");
 				}
 				else{
 					us.setType("employee");

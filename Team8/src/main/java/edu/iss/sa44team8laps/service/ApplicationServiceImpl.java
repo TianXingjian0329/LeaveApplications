@@ -101,7 +101,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		ArrayList<Application> alist= appRepository.findAppByUserId(uid);
 		ArrayList<Application> atlist= new ArrayList<Application>();
 		for(int i=0;i<alist.size();i++){
-			if(alist.get(i).getLeaveDate().after(date)){
+			if(alist.get(i).getLeaveDate().before(date)){
 				atlist.add(alist.get(i));
 			}
 		}

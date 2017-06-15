@@ -137,6 +137,71 @@ public class AdminEmployeeController {
 		redirectAttributes.addFlashAttribute("message", message);
 		return mav;
 	}
+	@RequestMapping(value = "employee/edit/{empId}", method =	RequestMethod.GET)
+	public ModelAndView editEmployeePage(@PathVariable String empId) {
+		ModelAndView mav = new ModelAndView("employee-edit");
+		CreateEmployee createEmployee = new CreateEmployee();
+		User employee = u.findUserByEmpId(Integer.parseInt(empId));
+		User manager = u.findUserByEmpId(e.findEmployeeById((employee.getEmployeeId())).getManagerId());
+		
+		createEmployee.setEmployeeId(Integer.parseInt(empId));
+		createEmployee.setEmpName(employee.getUserName());
+		createEmployee.setManagerName(manager.getUserName());
+		createEmployee.setPassWord(employee.getUserPassword());
+		createEmployee.setRoleName(r.findRoleById(employee.getRoleid()).getRoleName());
+		
+		mav.addObject("createEmployee", createEmployee);
+		
+		// Generating the list of possible managers
+		ArrayList<User> userList = u.findAllUsers();
+		ArrayList<String> managerList = new ArrayList<String>();
+		for (User user : userList) {
+			if (user.getEmployeeId() != 0 && user.getEmployeeId() != manager.getEmployeeId()) {
+				managerList.add(user.getUserName());
+			}
+		}
+		mav.addObject("managerList", managerList);
+		
+		// Generating the list of possible roles
+		ArrayList<Role> roleList = r.findAllRole();
+		ArrayList<String> roleNameList = new ArrayList<String>();
+		for (Role role : roleList) {
+			if (role.getRoleId() != employee.getRoleid()) {
+				roleNameList.add(role.getRoleName());				
+			}
+
+		}
+		mav.addObject("roleNameList", roleNameList);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "employee/edit/{empId}", method = RequestMethod.POST)
+	public ModelAndView editEmployeePage2(@ModelAttribute CreateEmployee createEmployee,
+			@PathVariable String empId, final RedirectAttributes redirectAttributes) {
+
+		ModelAndView mav = new ModelAndView("redirect:/admin/employee/list");
+		String message = "Employee was successfully updated.";
+		
+		User user = u.findUserByEmpId(Integer.parseInt(empId));
+		
+		Employee emp = e.findEmployeeById((createEmployee.getEmployeeId()));
+		emp.setId(emp.getId());
+		emp.setEmployeeId(createEmployee.getEmployeeId());
+		emp.setManagerId((u.findUserByName(createEmployee.getManagerName())).getEmployeeId());			
+		e.changeEmployee(emp);
+		
+		user.setUserName(createEmployee.getEmpName().trim());
+		user.setEmployeeId(createEmployee.getEmployeeId());
+		user.setUserPassword(createEmployee.getPassWord().trim());
+		user.setRoleid((r.findRoleByName(createEmployee.getRoleName().trim())).getRoleId());
+		u.changeUser(user);
+
+		mav.setViewName("redirect:/admin/employeelist");
+		redirectAttributes.addFlashAttribute("message", message);
+		return mav;
+	}
+
 
 }
 

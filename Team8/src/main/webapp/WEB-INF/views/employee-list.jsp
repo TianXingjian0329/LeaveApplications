@@ -26,7 +26,7 @@
 					<td>${employee.managerName}</td>
 					<td>${employee.roleName}</td>
 					<td align="center"><a
-						href="${pageContext.request.contextPath}/admin/managestaff/edit/${employee.empId}"><spring:message
+						href="${pageContext.request.contextPath}/admin/employee/edit/${employee.empId}"><spring:message
 								code="Edit" /></a></td>
 					<td><a
 						href="${pageContext.request.contextPath}/admin/deleteemployee/${employee.empId}"><spring:message
